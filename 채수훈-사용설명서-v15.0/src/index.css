@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #0B0B0B;
+  --color-brand-card: #151515;
+  --color-brand-light: #F2F0E9;
+  --color-brand-yellow: #FFD600;
+  --color-brand-red: #FF3B30;
+  --color-brand-green: #37FF8B;
+  --color-brand-white: #F7F7F7;
+  --color-brand-dark: #111111;
+  --color-brand-gray: #A0A0A0;
+
+  --font-sans: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Base style resets and enhancement */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  background-color: #0B0B0B;
+  color: #F7F7F7;
+  font-family: var(--font-sans);
+}
+
+/* Custom Scanline & Terminal effect */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  z-index: 10;
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Dot grid background for blueprint / industrial look */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* LED Blink animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.9); }
+}
+.led-blink {
+  animation: blink 1.5s infinite ease-in-out;
+}
+
+/* Pulse glow effect */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 5px rgba(55, 255, 139, 0.2); }
+  50% { box-shadow: 0 0 15px rgba(55, 255, 139, 0.6); }
+}
+.pulse-glow-green {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlowRed {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 59, 48, 0.2); }
+  50% { box-shadow: 0 0 15px rgba(255, 59, 48, 0.6); }
+}
+.pulse-glow-red {
+  animation: pulseGlowRed 2s infinite ease-in-out;
+}
+
+/* Corner clip style for industrial/sci-fi plates */
+.clipped-corner {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+}
+
+.clipped-corner-sm {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0B0B;
+}
+::-webkit-scrollbar-thumb {
+  background: #252525;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FFD600;
+}
+
+/* Focus ring for accessibility */
+.focus-ring:focus-visible {
+  outline: 2px solid #FFD600;
+  outline-offset: 2px;
+}
+
+/* Print/Serial stamp */
+.stamp {
+  font-family: var(--font-mono);
+  border: 2px solid currentColor;
+  padding: 4px 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+
+/* Shimmer load bar effect */
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+.shimmer::after {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(255, 255, 255, 0.15) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+  content: '';
+}
+
+/* Grid scanning background line */
+@keyframes scanline-anim {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.scanner-line {
+  animation: scanline-anim 6s infinite linear;
+}

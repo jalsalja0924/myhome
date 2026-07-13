@@ -1,0 +1,6 @@
+{
+  "name": "채수훈 사용설명서 v15.0",
+  "description": "디자인 실무와 생성형 AI, 영상, 웹 제작을 초보자의 언어로 가르치는 디자인 강사 채수훈의 B급 감성 자기소개 페이지",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
